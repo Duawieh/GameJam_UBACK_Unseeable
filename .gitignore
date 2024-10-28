@@ -1,0 +1,12 @@
+**/Logs
+**/Temp
+**/temp
+**/Library
+**/obj
+**/UserSettings
+
+/Releases
+
+**/*.zip
+**/*.rar
+**/*.7z
