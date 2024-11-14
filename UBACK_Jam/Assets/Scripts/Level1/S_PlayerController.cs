@@ -20,12 +20,12 @@ public class S_PlayerController : MonoBehaviour
         if (rootHeight > 0)
         {
             dropVelocity += gravityAccelerate * Time.deltaTime;
-            rt.localPosition += new Vector3(0, -dropVelocity, 0) * rt.localScale.y;
+            rt.localPosition += new Vector3(0, -dropVelocity, 0) * Time.deltaTime;
         }
         else
         {
             dropVelocity = 0.0f;
-            // 注意，此处乘法并非矩阵乘法，而是将对应分量相乘。
+            // ????????????????????????????????????
             rt.localPosition *= new Vector2(1, 0);
             rt.localPosition += new Vector3(0, rt.rect.height / 2.0f, 0);
             uponGround = false;
@@ -36,18 +36,22 @@ public class S_PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            transform.localPosition += new Vector3(horizonVelocity, 0, 0) * Time.deltaTime;
+            // if (!kickWall(new Vector3(1, 0, 0), transform.localPosition)) {
+                transform.localPosition += new Vector3(horizonVelocity, 0, 0) * Time.deltaTime;
+            // }
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.localPosition -= new Vector3(horizonVelocity, 0, 0) * Time.deltaTime;
+            // if (!kickWall(new Vector3(-1, 0, 0), transform.localPosition)) {
+                transform.localPosition -= new Vector3(horizonVelocity, 0, 0) * Time.deltaTime;
+            // }
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!uponGround)
             {
-                //transform.localPosition += new Vector3(0, 0.1f, 0);
-                dropVelocity = -gravityAccelerate;
+                transform.localPosition += new Vector3(0, gravityAccelerate * 0.01f, 0);
+                dropVelocity = -gravityAccelerate * 0.35f;
                 uponGround = true;
             }
         }
@@ -56,14 +60,23 @@ public class S_PlayerController : MonoBehaviour
 
     private void initScale()
     {
-        // 尺寸初始化
+        // ???????
         Vector2 scaleRate = UITransform.getScreenScale(GetComponent<RectTransform>());
         if (scaleRate.y == 0.0f) return;
         transform.localScale *= 0.07f / scaleRate.y;
 
-        // 向量长度初始化
+        // ????????????
         horizonVelocity = transform.localScale.x * 3.0f;
-        gravityAccelerate = transform.localScale.y * 3.0f;
+        gravityAccelerate = transform.localScale.y * 10.0f;
+    }
+
+    private bool kickWall(Vector3 _walkDir, Vector3 _curPos) {
+        _walkDir = _walkDir / _walkDir.magnitude * horizonVelocity * Time.deltaTime;
+        _curPos = GameMap.getIntPos(_curPos);
+        Vector3 checkPos = transform.localPosition + _walkDir;
+        Vector3 intPos = GameMap.getIntPos(checkPos);
+        if (_curPos.y < checkPos.y) return true;
+        else return false;
     }
 
     // Start is called before the first frame update
