@@ -1,17 +1,17 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 /// <summary>
-/// Óë UI Î»ÖÃºÍ³ß´çÏà¹ØµÄ·½·¨
+/// ä¸ UI ä½ç½®å’Œå°ºå¯¸ç›¸å…³çš„æ–¹æ³•
 /// </summary>
 public class UITransform : MonoBehaviour
 {
     /// <summary>
-    /// Ñ°ÕÒ¸ø¶¨¶ÔÏóÔÚ Hierarchy ÉÏµÄ×î½ü Canvas ×æÏÈ¡£×¢Òâ£ºÈç¹û¸ø¶¨¶ÔÏó¼´ Canvas ¶ÔÏó£¬·µ»Ø½á¹ûÒ²²»»áÊÇËù¸ø¶ÔÏó¡£
+    /// å¯»æ‰¾ç»™å®šå¯¹è±¡åœ¨ Hierarchy ä¸Šçš„æœ€è¿‘ Canvas ç¥–å…ˆã€‚æ³¨æ„ï¼šå¦‚æœç»™å®šå¯¹è±¡å³ Canvas å¯¹è±¡ï¼Œè¿”å›ç»“æœä¹Ÿä¸ä¼šæ˜¯æ‰€ç»™å¯¹è±¡ã€‚
     /// </summary>
-    /// <returns>×î½ü Canvas ×æÏÈ£¬»ò null¡£</returns>
+    /// <returns>æœ€è¿‘ Canvas ç¥–å…ˆï¼Œæˆ– nullã€‚</returns>
     private static Transform getCanvasAncestor(Transform _cur)
     {
         Transform fa = _cur.transform.parent;
@@ -30,9 +30,9 @@ public class UITransform : MonoBehaviour
     }
 
     /// <summary>
-    /// »ñÈ¡¸ø¶¨ RectTransform ¶ÔÏóÔÚÆäËùÊô Canvas ÉÏµÄ¿í¸ßÕ¼±È¡£
+    /// è·å–ç»™å®š RectTransform å¯¹è±¡åœ¨å…¶æ‰€å± Canvas ä¸Šçš„å®½é«˜å æ¯”ã€‚
     /// </summary>
-    /// <returns>·µ»ØÆäÔÚ×î½ü Canvas ×æÏÈÉÏµÄ¿í¸ßÕ¼±È£¬ÈôÆäÔÚ Hierarchy ÖĞ²»ÊôÓÚÈÎºÎ Canvas ¶ÔÏó£¬·µ»ØÁãÏòÁ¿¡£</returns>
+    /// <returns>è¿”å›å…¶åœ¨æœ€è¿‘ Canvas ç¥–å…ˆä¸Šçš„å®½é«˜å æ¯”ï¼Œè‹¥å…¶åœ¨ Hierarchy ä¸­ä¸å±äºä»»ä½• Canvas å¯¹è±¡ï¼Œè¿”å›é›¶å‘é‡ã€‚</returns>
     public static Vector2 getScreenScale(RectTransform _objRectTr)
     {
         if (_objRectTr.transform == null) return Vector2.zero;
@@ -44,8 +44,8 @@ public class UITransform : MonoBehaviour
 }
 
 /// <summary>
-/// ÓëÒşÎ¬²ã´Î¿ØÖÆÏà¹ØµÄÀà
-/// ·Ç³£ÖØÒª£¡
+/// ä¸éšç»´å±‚æ¬¡æ§åˆ¶ç›¸å…³çš„ç±»
+/// éå¸¸é‡è¦ï¼
 /// </summary>
 public static class DimensionControl
 {
@@ -53,9 +53,9 @@ public static class DimensionControl
     private static int minLevel, maxLevel;
 
     /// <summary>
-    /// ÉèÖÃ²ã´Î·¶Î§£¬·¶Î§½«±»ÉèÖÃÎª´«ÈëÏòÁ¿µÄ x ·ÖÁ¿µ½ y ·ÖÁ¿Ö®¼äµÄ±ÕÇø¼ä£¬½öÏŞÕûÊı¡£
+    /// è®¾ç½®å±‚æ¬¡èŒƒå›´ï¼ŒèŒƒå›´å°†è¢«è®¾ç½®ä¸ºä¼ å…¥å‘é‡çš„ x åˆ†é‡åˆ° y åˆ†é‡ä¹‹é—´çš„é—­åŒºé—´ï¼Œä»…é™æ•´æ•°ã€‚
     /// </summary>
-    /// <param name="_range">´«ÈëµÄ·¶Î§ÏòÁ¿</param>
+    /// <param name="_range">ä¼ å…¥çš„èŒƒå›´å‘é‡</param>
     public static void setLevelRange(Vector2 _range)
     {
         minLevel = (int)_range.x;
@@ -81,16 +81,16 @@ public static class DimensionControl
         return;
     }
 
-    /// <returns>·µ»Øµ±Ç°ËùÔÚµÄÒşÎ¬²ã´Î</returns>
+    /// <returns>è¿”å›å½“å‰æ‰€åœ¨çš„éšç»´å±‚æ¬¡</returns>
     public static int getLevel()
     {
         return clipLevel;
     }
 
     /// <summary>
-    /// ÉèÖÃÒşÎ¬²ã´Î
+    /// è®¾ç½®éšç»´å±‚æ¬¡
     /// </summary>
-    /// <returns>ÉèÖÃ³É¹¦Ôò·µ»Ø true£¬·ñÔò·µ»Ø false¡£</returns>
+    /// <returns>è®¾ç½®æˆåŠŸåˆ™è¿”å› trueï¼Œå¦åˆ™è¿”å› falseã€‚</returns>
     public static bool setLevel(int _l)
     {
         if (_l >= minLevel && _l <= maxLevel)
@@ -98,6 +98,13 @@ public static class DimensionControl
             clipLevel = _l;
             return true;
         }
+        return false;
+    }
+
+    public static bool outOfRange(int _l)
+    {
+        if (_l < minLevel) return true;
+        if (_l > maxLevel) return true;
         return false;
     }
 }
@@ -116,7 +123,7 @@ public class S_L0Controller : MonoBehaviour
     {
         Vector2 localScaleRate = UITransform.getScreenScale(GetComponent<RectTransform>());
         Vector2 targetScaleRate = new Vector2(0.03f, 0.03f);
-        // ±ÜÃâ³ıÒÔ 0
+        // é¿å…é™¤ä»¥ 0
         if (localScaleRate.y == 0.0f) return;
         transform.localScale *= targetScaleRate.y / localScaleRate.y;
         return;
