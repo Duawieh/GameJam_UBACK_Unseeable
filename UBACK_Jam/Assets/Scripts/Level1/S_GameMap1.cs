@@ -7,6 +7,8 @@ using UnityEngine.Video;
 public static class GameMap {
     public static int gameLevel;
 
+    public static bool controllable;
+
     public static Vector3 gameScale = Vector3.one;
 
     public static int[][] gameMap = new int[][]{new int[]{0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -78,6 +80,10 @@ public class S_GameMap1 : MonoBehaviour
                 instantiateMapTile(new Vector2(i - 7.5f, 0));
             }
         }
+    }
+
+    void Awake() {
+        GameMap.gameLevel = 1;
     }
 
     // Start is called before the first frame update

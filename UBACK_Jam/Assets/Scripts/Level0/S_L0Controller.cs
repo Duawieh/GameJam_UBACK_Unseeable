@@ -118,6 +118,8 @@ public class S_L0Controller : MonoBehaviour
                                    new Color(1, 0.792f, 0.443f),
                                    new Color(1, 0.710f, 0.212f),
                                    new Color(1, 0.651f, 0.059f) };
+    private bool levelFinished = false;
+    private bool clueFounded = false;
 
     private void initRect()
     {
@@ -131,6 +133,7 @@ public class S_L0Controller : MonoBehaviour
 
     private void keyboardControl()
     {
+        if (GameMap.controllable == false) return;
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             DimensionControl.levelIncrease();
@@ -149,6 +152,45 @@ public class S_L0Controller : MonoBehaviour
         sr.color = clipColors[DimensionControl.getLevel() + 1];
     }
 
+    private void itemIteractions() {
+        if (DimensionControl.getLevel() == 5) {
+            if (levelFinished) return;
+            levelFinished = true;
+            GameObject mc = GameObject.FindGameObjectWithTag("MainCamera");
+            mc.GetComponent<S_levelManager>().NextLevel();
+            StartCoroutine(Anim_nextLevel());
+        }
+        else if (DimensionControl.getLevel() == -1) {
+            if (clueFounded) return;
+            clueFounded = true;
+        }
+    }
+
+    // 由于 Level 0 场景内没有 item 显示，这里单独编写一个动画协程
+    // 该协程无需控制音效和 SceneManager，因为 S_LevelManager.NextLevel() 仍然正常调用
+    // 但是 S_LevelManager.NextLevel() 用特判卡掉了 Level 0 的通关动画
+    private IEnumerator Anim_nextLevel() {
+        GameObject Tt_controller = GameObject.Find("Tt_glow");
+        Tt_controller.GetComponent<SpriteRenderer>().enabled = true;
+        Tt_controller.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+
+        float t = 0.0f;
+
+        while (t < 8) {
+            t += Time.deltaTime;
+            Tt_controller.transform.localScale += Vector3.one * 48 * Time.deltaTime;
+            yield return 0;
+        }
+
+        yield break;
+    }
+
+    void Awake() 
+    {
+        GameMap.gameLevel = 0;
+        GameMap.controllable = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -162,5 +204,6 @@ public class S_L0Controller : MonoBehaviour
     {
         keyboardControl();
         updatePointColor();
+        itemIteractions();
     }
 }

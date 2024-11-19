@@ -66,6 +66,10 @@ public class S_GameMap2 : MonoBehaviour
         }
     }
 
+    void Awake() {
+        GameMap.gameLevel = 2;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

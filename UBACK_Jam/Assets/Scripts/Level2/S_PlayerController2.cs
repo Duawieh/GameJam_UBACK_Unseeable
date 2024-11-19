@@ -40,6 +40,8 @@ public class S_PlayerController2 : MonoBehaviour
 
     private void keyboardControl()
     {
+        if (GameMap.controllable == false) return;
+
         RectTransform rt = GetComponent<RectTransform>();
         if (rt == null) return;
 
@@ -109,7 +111,7 @@ public class S_PlayerController2 : MonoBehaviour
     private void initClips()
     {
         DimensionControl.setLevelRange(new Vector2(0, 15));
-        DimensionControl.setLevel(6);
+        DimensionControl.setLevel(1);
         return;
     }
 
@@ -169,6 +171,12 @@ public class S_PlayerController2 : MonoBehaviour
         initScale();
         initClips();
         gameMapPanel = GameObject.Find("GameMapPanel");
+    }
+
+    void Start()
+    {
+        GameMap.gameLevel = 2;
+        GameMap.controllable = true;
     }
 
     // Update is called once per frame

@@ -11,6 +11,8 @@ public class S_PlayerController1 : MonoBehaviour
 
     private void keyboardControl()
     {
+        if (GameMap.controllable == false) return;
+        
         RectTransform rt = GetComponent<RectTransform>();
         if (rt == null) return;
 
@@ -65,7 +67,7 @@ public class S_PlayerController1 : MonoBehaviour
     private void initClips()
     {
         DimensionControl.setLevelRange(new Vector2(0, 15));
-        DimensionControl.setLevel(6);
+        DimensionControl.setLevel(3);
         return;
     }
 
@@ -73,7 +75,6 @@ public class S_PlayerController1 : MonoBehaviour
     {
         RectTransform rt = GetComponent<RectTransform>();
         if (rt == null) return;
-        Debug.Log(GameMap.gameScale.y);
         float halfHeight = rt.rect.height / 2.0f * GameMap.gameScale.y;
         transform.localPosition += new Vector3(0, halfHeight, 0);
         return;
@@ -100,6 +101,7 @@ public class S_PlayerController1 : MonoBehaviour
         else
         {
             curPos = GameMap.getIntPos(curPos);
+            curPos += new Vector3(1, 0, 0);
             if (_walkDir.z < 0)
             {
                 if (DimensionControl.outOfRange((int)curPos.z + 1)) return true;
@@ -120,6 +122,12 @@ public class S_PlayerController1 : MonoBehaviour
         initClips();
         initPosition();
         gameMapPanel = GameObject.Find("GameMapPanel");
+    }
+
+    void Start()
+    {
+        GameMap.gameLevel = 1;
+        GameMap.controllable = true;
     }
 
     // Update is called once per frame
