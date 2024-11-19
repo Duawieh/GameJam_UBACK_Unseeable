@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Video;
 
 public static class GameMap {
+    public static int gameLevel;
+
     public static Vector3 gameScale = Vector3.one;
 
     public static int[][] gameMap = new int[][]{new int[]{0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -22,7 +24,7 @@ public static class GameMap {
                                                 new int[]{0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 7},
                                                 new int[]{0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 7},
                                                 new int[]{0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 7},
-                                                new int[]{7, 7, 7, 4, 4, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}};
+                                                new int[]{7, 7, 7, 5, 5, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}};
     
     // 从世界坐标转换到地图晶格坐标
     // 仅限 Level 1 和 Level 2 调用
