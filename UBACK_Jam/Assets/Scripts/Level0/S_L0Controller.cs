@@ -121,6 +121,7 @@ public class S_L0Controller : MonoBehaviour
     private bool levelFinished = false;
     private bool clueFounded = false;
 
+    public GameObject cluePanel;
     public GameObject tempObj_audioPlayer;
     public AudioClip audio_interact;
 
@@ -173,6 +174,8 @@ public class S_L0Controller : MonoBehaviour
             temp.GetComponent<S_audioPlayer>().life = 1.0f;
 
             // 打开线索面板
+            GameMap.controllable = false;
+            Instantiate(cluePanel, transform.parent);
         }
     }
 

@@ -489,6 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1334bbe024aff429e092235395f7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cluePanel: {fileID: 4814355657148324193, guid: 54c30108387ecfe41a275c84e2ec5c46, type: 3}
   tempObj_audioPlayer: {fileID: 5077169689949279319, guid: f04b94a50184e9d4fa916c2077d222cf, type: 3}
   audio_interact: {fileID: 8300000, guid: 86591e94e476d7e4b9ad7b70192145ce, type: 3}
   clipLevel: 11
@@ -1075,6 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1334bbe024aff429e092235395f7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cluePanel: {fileID: 0}
   tempObj_audioPlayer: {fileID: 0}
   audio_interact: {fileID: 0}
   clipLevel: 1

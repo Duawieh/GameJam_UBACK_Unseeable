@@ -69,6 +69,8 @@
     <Compile Include="Assets\Scripts\General\S_itemBehavour_clue.cs" />
     <Compile Include="Assets\Scripts\Level2\S_PlayerController2.cs" />
     <Compile Include="Assets\Scripts\Level1\S_GameMap1.cs" />
+    <Compile Include="Assets\Scripts\General\S_cluePanel.cs" />
+    <Compile Include="Assets\Scripts\Level3\S_PlayerController3.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

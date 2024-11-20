@@ -8,6 +8,7 @@ public class S_itemsInteractions : MonoBehaviour
     private RectTransform player;
     private bool taken = false;
 
+    public GameObject cluePanel;
     public GameObject tempObj_audioPlayer;
     public AudioClip audio_interact;
 
@@ -57,7 +58,8 @@ public class S_itemsInteractions : MonoBehaviour
                     adp.GetComponent<S_audioPlayer>().life = 1.0f;
 
                     // 打开线索面板
-
+                    GameMap.controllable = false;
+                    Instantiate(cluePanel, transform.parent);
 
                     // 删除自身
                     Destroy(gameObject);
