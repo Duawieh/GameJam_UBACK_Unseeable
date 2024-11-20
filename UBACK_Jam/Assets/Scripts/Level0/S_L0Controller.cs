@@ -121,6 +121,9 @@ public class S_L0Controller : MonoBehaviour
     private bool levelFinished = false;
     private bool clueFounded = false;
 
+    public GameObject tempObj_audioPlayer;
+    public AudioClip audio_interact;
+
     private void initRect()
     {
         Vector2 localScaleRate = UITransform.getScreenScale(GetComponent<RectTransform>());
@@ -163,6 +166,13 @@ public class S_L0Controller : MonoBehaviour
         else if (DimensionControl.getLevel() == -1) {
             if (clueFounded) return;
             clueFounded = true;
+
+            // 播放线索交互音效
+            GameObject temp = Instantiate(tempObj_audioPlayer);
+            temp.GetComponent<S_audioPlayer>().adc = audio_interact;
+            temp.GetComponent<S_audioPlayer>().life = 1.0f;
+
+            // 打开线索面板
         }
     }
 

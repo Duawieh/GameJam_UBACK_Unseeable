@@ -7,6 +7,10 @@ public class S_PlayerController2 : MonoBehaviour
 {
     private GameObject gameMapPanel;
 
+    public GameObject tempObj_audioPlayer;
+    public AudioClip audio_Jump;
+    public AudioClip audio_Down;
+
     public float dropVelocity = 0.0f;
 
     public bool uponGround = false;
@@ -31,6 +35,13 @@ public class S_PlayerController2 : MonoBehaviour
         // 落地
         else
         {
+            // 落地时播放音效
+            if (uponGround)
+            {
+                GameObject t = Instantiate(tempObj_audioPlayer);
+                t.GetComponent<S_audioPlayer>().adc = audio_Down;
+                t.GetComponent<S_audioPlayer>().life = 1.0f;
+            }
             float halfBodyHeight = rt.rect.height / 2.0f * rt.localScale.y;
             rt.localPosition = new Vector3(rt.localPosition.x, groundHeight + halfBodyHeight, 0);
             dropVelocity = 0.0f;
@@ -82,6 +93,11 @@ public class S_PlayerController2 : MonoBehaviour
         {
             if (!uponGround)
             {
+                // 起跳时播放音效
+                GameObject t = Instantiate(tempObj_audioPlayer);
+                t.GetComponent<S_audioPlayer>().adc = audio_Jump;
+                t.GetComponent<S_audioPlayer>().life = 1.0f;
+
                 transform.localPosition += new Vector3(0, gravityAccelerate * 0.01f, 0);
                 dropVelocity = -gravityAccelerate * 0.45f;
                 uponGround = true;

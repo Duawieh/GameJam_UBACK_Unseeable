@@ -3,7 +3,10 @@ guid: d9a9cf2d0cefc7548ba660dee2141736
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tempObj_audioPlayer: {fileID: 5077169689949279319, guid: f04b94a50184e9d4fa916c2077d222cf, type: 3}
+  - audio_Jump: {fileID: 8300000, guid: 8aaa534254a008240b0ba9ac2caeb003, type: 3}
+  - audio_Down: {fileID: 8300000, guid: 6c31d2801a9d31b43b11851f4b357821, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

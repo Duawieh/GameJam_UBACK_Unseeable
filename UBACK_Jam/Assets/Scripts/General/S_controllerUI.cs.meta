@@ -4,12 +4,14 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - tempObj_audioPlayer: {fileID: 5077169689949279319, guid: f04b94a50184e9d4fa916c2077d222cf, type: 3}
   - counterUI: {instanceID: 0}
   - controllerUI: {instanceID: 0}
   - pressedUp: {fileID: 2800000, guid: 054f0201a74558f4891ae5f93f5c60f8, type: 3}
   - pressedDown: {fileID: 2800000, guid: 9ddf1ab95b234044abc173a808251346, type: 3}
   - pressedBoth: {fileID: 2800000, guid: 7c685a34255733a41966e1242efe1e8f, type: 3}
   - pressedNone: {fileID: 2800000, guid: 1fdcbc32f0f6cbd42aa1088b08253af1, type: 3}
+  - audio_buttonClick: {fileID: 8300000, guid: 23567375dfc0f884ab1f1b1604a7dcef, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

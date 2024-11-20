@@ -8,6 +8,9 @@ public class S_itemsInteractions : MonoBehaviour
     private RectTransform player;
     private bool taken = false;
 
+    public GameObject tempObj_audioPlayer;
+    public AudioClip audio_interact;
+
     public int clipLevel;
     public Vector3 intPos;
     // 0：通关道具 1：线索道具
@@ -36,9 +39,11 @@ public class S_itemsInteractions : MonoBehaviour
         if (GameMap.gameLevel == 1) playerIntPos -= new Vector3(0, 2, 0);
         if (playerIntPos == intPos)
         {
+            // 不在同一层或已交互时禁用交互
             if (DimensionControl.getLevel() != clipLevel) return;
             if (taken == true) return;
             taken = true;
+
             switch (itemType) {
                 case 0:
                     GameObject mc = GameObject.FindGameObjectWithTag("MainCamera");
@@ -46,6 +51,16 @@ public class S_itemsInteractions : MonoBehaviour
                     GameMap.controllable = false;
                     break;
                 case 1:
+                    // 播放交互音效
+                    GameObject adp = Instantiate(tempObj_audioPlayer);
+                    adp.GetComponent<S_audioPlayer>().adc = audio_interact;
+                    adp.GetComponent<S_audioPlayer>().life = 1.0f;
+
+                    // 打开线索面板
+
+
+                    // 删除自身
+                    Destroy(gameObject);
                     break;
             }
         }
