@@ -38,6 +38,7 @@ public class S_itemsInteractions : MonoBehaviour
     {
         Vector3 playerIntPos = GameMap.getIntPos(player.localPosition);
         if (GameMap.gameLevel == 1) playerIntPos -= new Vector3(0, 2, 0);
+        if (GameMap.gameLevel == 2) playerIntPos += new Vector3(1, 0, 0);
         if (playerIntPos == intPos)
         {
             // 不在同一层或已交互时禁用交互

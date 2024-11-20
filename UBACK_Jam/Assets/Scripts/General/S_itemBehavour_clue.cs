@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class S_itemBehavour_clue : MonoBehaviour
 {
-    private Vector3 pos;
-
-    private void selfRotation()
+    private void selfFloat()
     {
-        pos += new Vector3(0, Mathf.Sin(Time.time), 0) * GameMap.gameScale.y;
-    }
-
-    private void Start()
-    {
-        pos = transform.localPosition;
+        float t = Time.time * Mathf.PI / 2;
+        float derivative = Mathf.Sin(t) * GameMap.gameScale.y / 4;
+        transform.localPosition += new Vector3(0, derivative, 0) * Time.deltaTime;
+        return;
     }
 
     // Update is called once per frame
     void Update()
     {
-        selfRotation();
+        selfFloat();
     }
 }
