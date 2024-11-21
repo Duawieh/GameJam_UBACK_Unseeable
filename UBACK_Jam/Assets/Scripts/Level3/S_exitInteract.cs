@@ -9,7 +9,7 @@ public class S_exitInteract : MonoBehaviour
     private void interact() 
     {
         Vector3 dis = player.transform.localPosition - transform.localPosition;
-        if (dis.magnitude <= 0.128f) {
+        if (dis.magnitude <= 0.256f) {
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<S_levelManager>().NextLevel();
             Destroy(gameObject);
         }

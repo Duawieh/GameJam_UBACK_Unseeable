@@ -9,6 +9,7 @@ public class S_levelManager : MonoBehaviour
     private int curScene;
     public GameObject tempObj_AudioPlayer;
     public AudioClip audio_levelFinished;
+    public AudioClip music_titleMusic;
 
     public void NextLevel() 
     {
@@ -36,8 +37,9 @@ public class S_levelManager : MonoBehaviour
 
         // 播放通关音乐
         GameObject p = Instantiate(tempObj_AudioPlayer);
-        p.GetComponent<S_audioPlayer>().adc = audio_levelFinished;
-        p.GetComponent<S_audioPlayer>().life = 10.0f;
+        p.GetComponent<S_audioPlayer>().adc = music_titleMusic;
+        p.GetComponent<S_audioPlayer>().life = 78.0f;
+        DontDestroyOnLoad(p);
 
         yield return new WaitForSeconds(3);
 
