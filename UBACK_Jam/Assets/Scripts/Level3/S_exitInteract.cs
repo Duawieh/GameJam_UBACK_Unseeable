@@ -5,16 +5,14 @@ using UnityEngine;
 public class S_exitInteract : MonoBehaviour
 {
     private GameObject player;
-    private bool Finished = false;
 
     private void interact() 
     {
         Vector3 dis = player.transform.localPosition - transform.localPosition;
         if (dis.magnitude <= 0.128f) {
-            GameMap.controllable = false;
-            Finished = true;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<S_levelManager>().NextLevel();
+            Destroy(gameObject);
         }
-
         return;
     }
 
